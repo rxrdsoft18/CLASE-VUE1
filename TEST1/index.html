@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>APRENDIENDO Vue.js</title>
+	<link href="css/animate.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="" id="app">
+		<p>{{mensaje}}</p>
+	</div>
+<!--====================================================================== -->
+	<div id="app-2">
+		  <span v-bind:title="message">
+		    Hover your mouse over me for a few seconds to see my dynamically bound title!
+		  </span>
+	</div>
+<!--====================================================================== -->
+	<div id="app-3">
+ 		 <p v-if="seen">Now you see me</p>
+ 		 <p v-else="seen">No te veo</p>
+	</div>
+<!--====================================================================== -->
+	<div id="app-4">
+	  	<ol>
+	    	<li v-for="todo in todos">
+	      		{{ todo.text }}
+	    	</li>
+	  	</ol>
+	</div>
+<!--====================================================================== -->
+	<div id="app-5">
+  		<p>{{ message }}</p>
+  		<button v-on:click="reverseMessage">Reverse Message</button>
+	</div>
+<!--====================================================================== -->
+	<div id="app-6">
+  		<p>{{ message }}</p>
+  		<input v-model="message">
+	</div>
+<!--====================================================================== -->
+	<div id="app-7">
+  		<ol>
+		    <!-- Now we provide each todo-item with the todo object    -->
+		    <!-- it's representing, so that its content can be dynamic -->
+	    	<todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+  		</ol>
+	</div>
+<!--====================================================================== -->
+
+	<div id="app8">
+		<input type="text" placeholder="Escribir tarea" v-model="nuevaTarea">
+		<input type="submit" value="Agregar" @click="agregarTarea(nuevaTarea)">
+
+		<ul>
+			<li v-for="(tarea,index) in tareas">
+				<a href="#" @click="eliminarTarea(tarea,index)">X</a>{{index}}- {{tarea.texto}}
+			</li>
+		</ul>
+		<pre>
+			{{$data | json}}
+		</pre>
+	</div>
+<!--====================================================================== -->
+	<br><br>
+	<div id="app9">
+		
+		<form action="">
+			<p v-if="!mensaje" id="aviso">Debe ingresar un texto</p>
+			<textarea name="" id="" cols="30" rows="10" placeholder="Escribir mensaje" v-model="mensaje" required></textarea>
+			<input type="submit" v-if="mensaje">
+		</form>
+
+		<pre>
+			{{$data | json}}
+		</pre>
+	</div>
+<!--====================================================================== -->
+	<br>
+	<br>
+	<br>
+	<div class="container" id="app10">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<form action="" @submit.prevent="enviarDatos">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Nombre" v-model="nombre">
+							</div>
+
+							<div class="form-group">
+								<input type="number" class="form-control" placeholder="Edad" v-model="edad">
+							</div>
+
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Sexo" v-model="sexo">
+							</div>
+
+							<div class="form-group">
+								<input type="email" class="form-control" placeholder="Correo" v-model="correo">
+							</div>
+							<button type="submit" class="btn btn-info pull-right" v-if="camposLlenos">Enviar datos</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<pre>
+		{{$data | json}}
+		</pre>
+	</div>
+<!--====================================================================== -->
+	<br>
+	<br>
+	<br>
+	<div class="container" id="app11">
+		<div class="row">
+			<div class="col-md-5">
+				<div class="panel panel-info">
+					<div class="panel-body">
+						<form action="" method="POST" @submit.prevent="enviar">
+							<div class="form-group">
+								<input type="text" class="form-control" v-model="menSaludo">
+							</div>
+							<button type="submit" class="btn btn-default">Enviar</button>
+							<button class="btn btn-primary" v-on:click="saludar(menSaludo)">Saludar</button>
+						</form>
+						<br>
+						<div class="form-group">
+							<a  @click.prevent="abrir" href="http://google.com" class="btn btn-danger">Ir a</a>
+						</div>
+						<button @keyup="teclaPulsada" class="btn btn-success">Keyup</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<pre>
+			{{$data | json}}
+		</pre>
+	</div>
+<!--====================================================================== -->
+	<br>
+	<br>
+	<br>
+	<div class="container" id="app12">
+<!--	<ul>
+			<li v-for="data in persona">
+				{{data}}
+			</li>
+		</ul> -->
+
+<!--	<ul>
+			<li v-for="num in numeros">
+				{{num}}
+			</li>
+		</ul> -->
+<!--	<ul>
+			<li v-for="dia in semana">
+				{{dia.dia}} : {{dia.numero}}
+			</li>
+		</ul>-->
+		<template v-for="num in numeros">
+			<h1>{{num}}</h1>
+			<hr>
+		</template>
+
+	</div>
+<!--====================================================================== -->
+	<br><br><br>
+	<div class="container" id="app13">
+		<h2 v-bind:class="{'azul':colorT,'subrayado':subrayadoT}">
+			Usando directiva v-bind:class="{}" sintaxis de objeto
+		</h2>
+		<h2 v-bind:class="objetoDirecto">
+			Usando directiva v-bind:class="{}" sintaxis de objeto,forma directa
+		</h2>
+		<h2 v-bind:class="[objetoDeClases.colorT,objetoDeClases.subrayadoT]">
+			Usando directiva v-bind:class="{}" sintaxis de array
+		</h2>
+		<hr>
+		<h2 v-bind:style="{color:letra,fontSize:tamano}">
+			Usando directiva v-bind:style="{}" sintaxis de objeto
+		</h2>
+		<h2 v-bind:style="estiloDirecto">
+			Usando directiva v-bind:style="{}" sintaxis de objeto,forma directa
+		</h2>
+		<h2 v-bind:style="[estiloDirecto,otroObjetoEstilo]">
+			Usando directiva v-bind:style="{}" sintaxis de array
+		</h2>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
+		<input type="color" v-model="pintarColor">
+		
+		<h2 v-bind:style="{color:pintarColor}">Color pintado!!!</h2>
+		
+		<pre>
+			{{$data | json}}
+		</pre>
+	</div>	
+<!--====================================================================== -->
+	<br>
+	<br>
+	<br>
+<!--	<div class="container" id="app14">
+		<div class="citaEstilo">
+			<h2>{{citaElegida}}</h2>
+			<h2 v-if="contador>0">{{contador}}</h2>
+			<button @click="like" class="btn btn-default">Like</button>
+			<button @click="dislike" class="btn btn-danger">Dislike</button>
+		</div> -->
+		<div id="app14">
+			<cita></cita>
+			<cita></cita>
+			<cita></cita>
+		</div>
+		<br><br>
+	</div>
+<!--====================================================================== -->
+	<div class="container" id="app15">
+		<h1>{{myName| mayusculas}}</h1>
+		<h1>{{myName| formal }}</h1>
+		<pre>
+			{{$data | json}}
+		</pre>
+	</div>
+<!--====================================================================== -->
+<div class="container" id="app16">
+	<button class="btn btn-primary" @click="show=!show">Transition</button>
+	<transition name="fade">
+		<p v-if="show">Test Transition</p>
+	</transition>
+</div>
+	<br>
+	<br>
+	<br>
+<div class="container" id="app17">
+	<button @click="shows = !shows">Toggle show</button>
+  	<transition name="bounce">
+   		<p v-if="shows">Look at me!</p>
+  	</transition>
+</div>
+<!--======================================================================-->
+	<br>
+	<br>
+	<br>
+	<div class="container" id="app18">
+		<button @click="mostrar = !mostrar">
+    	Toggle render
+  		</button>
+  		<transition
+    		name="custom-classes-transition"
+    		enter-active-class="animated bounceInRight"
+    		leave-active-class="animated bounceOutRight"
+  		>
+    		<p v-if="mostrar">hello Richard!</p>
+  		</transition>
+	</div>
+	<br>
+		<br>
+		<br>
+<!--======================================================================-->
+	<div class="container" id="app19">
+		 <button @click="show = !show">
+    		Toggle
+  		</button>
+  		<transition
+    		v-on:before-enter="beforeEnter"
+    		v-on:enter="enter"
+    		v-on:leave="leave"
+    		v-bind:css="false"
+  		>
+    		<p v-if="show">
+     			 Demo
+   			 </p>
+  		</transition>
+	</div>
+	<br>
+		<br>
+		<br>
+<!--======================================================================-->
+	<div class="container" id="app20">
+		<h1>{{message}}</h1>
+		<input type="text" placeholder="Edit me!" v-model="message" class="form-control">
+		<br>
+
+		<label for="checkbox">
+			<input type="checkbox" id="checkbox" v-model="check">{{check}}
+		</label>
+		<br>
+
+		<label for="radio1">
+			<input type="radio" id="radio1" value="Vue js" v-model="seleccion">Vue js
+		</label>
+		<label for="radio2">
+			<input type="radio" id="radio2" value="Angular js" v-model="seleccion">Angular
+		</label>
+		<span>Seleccion:{{seleccion}}</span>
+		<br><br>
+		<span>Multiline message is:</span>
+			<p style="white-space: pre">{{ mensaje }}</p>
+			<textarea v-model="mensaje" placeholder="add multiple lines"></textarea>
+		<br>
+		<br>
+		<label for="check1">
+			<input type="checkbox" id="check1" value="Richard" v-model="nombreCheck">Richard
+		</label>
+		<label for="check2">
+			<input type="checkbox" id="check2" value="Jans" v-model="nombreCheck">Jans
+		</label>
+		<label for="check3">
+			<input type="checkbox" id="check3" value="Minllula" v-model="nombreCheck">Minllula
+		</label>
+		<span>Selecion: {{nombreCheck}}</span>
+		<br><br>
+		<select class="form-control" v-model="seleccionado">
+			<option v-for="tarea in aprender" v-bind:value="tarea.valor">			{{tarea.texto}}
+			</option>
+		</select>
+		<span>Tarea seleccionada: {{seleccionado}}</span>
+		<br><br>
+		<select v-model="selected" class="form-control">
+  			<option disabled value="">Please select one</option>
+  			<option>A</option>
+  			<option>B</option>
+  			<option>C</option>
+		</select>
+		<span>Selected: {{ selected }}</span>
+		<br><br>
+		<select v-model="selected1" multiple="">
+  			<option>A</option>
+  			<option>B</option>
+  			<option>C</option>
+		</select>
+		<span>Selected: {{ selected1 }}</span>
+		<br><br>
+		<pre>{{$data | json}}</pre>
+	</div>
+	<br>
+		<br>
+		<br>
+<!--======================================================================-->
+	<div class="container" id="app21">
+
+		<ul>
+			<li v-for="persona in personas">{{persona.name.first}}</li>
+		<pre>{{$data | json}}</pre>
+	</div>
+	<br>
+	<br>
+	<br>
+<!--======================================================================-->
+	<div class="container" id="app22">
+		<input type="text" v-model="busqueda">
+		<ul>
+			<li v-for="todo in filterItems">{{todo.id}} - {{todo.title}}</li>
+		</ul>
+		<pre>{{$data | json}}</pre>
+	</div>
+	<br>
+	<br>
+	<br>
+<!--======================================================================-->
+	<div class="container" id="app23">
+		<h1>Usando Componentes Locales</h1>
+		<usuarios :lista='users'></usuarios>
+
+		<template id="usuario-template">
+			<ul>
+				<li v-for="user in users">{{user.username}}</li>
+			</ul>
+		</template>
+		<pre>{{$data | json}}</pre>
+	</div>
+	<br>
+	<br>
+	<br>
+
+<!--======================================================================-->
+
+	<div class="container" id="app24">
+		<app-tarea :tar='tareas'></app-tarea>
+		<pre>{{$data | json}}</pre>
+	</div>
+	<template id="tareas-template">
+		<div class="col-xs-12 col-sm-12 col-md-offset-3 col-md-5 col-lg-offset-3 col-lg-5">
+			<h2>ToDo App</h2>
+			<!--Formulario -->
+			<form action="" class="form" @submit.prevent="addTarea(insertarTarea)">
+				<div class="input-group">
+					<input type="text" class="form-control" v-model="insertarTarea">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-plus"></span>Añadir tarea</button>
+					</span>
+				</div>
+			</form>
+			<!--Listado de tareas -->
+			<ul class="list-group">
+				<li class="list-group-item clearfix" v-for="(tarea,index) in tar">
+					<p class="lead" :class="{'completado':tarea.completado}">
+						{{tarea.titulo}}
+					</p>
+					<div class="form-group">
+						<input type="text" class="form-control" v-show="editandoTarea===index" v-model="tarea.titulo" @blur="editandoTarea=null,editarTarea(tarea)">
+					</div>
+					<div>
+						<span class="pull-right">
+							<button class="btn btn-default xs" @click="editandoTarea=index">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button>
+
+							<button class="btn btn-default xs" v-show="editandoTarea===index" @click="editandoTarea=null,editarTarea(tarea)">
+								<span class="glyphicon glyphicon-floppy-saved"></span>
+							</button>
+
+							<button class="btn btn-primary xs" @click="estadoTarea(tarea,true)">
+								<span class="glyphicon glyphicon-ok"></span>
+							</button>
+
+							<button class="btn btn-primary xs" @click="estadoTarea(tarea,false)">
+								<span class="glyphicon glyphicon-repeat"></span>
+							</button>
+
+							<button class="btn btn-danger xs" @click="removerTarea(tarea)">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button>
+						</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</template>
+<!--======================================================================-->
+	<br>
+	<br>
+	<br>
+
+	
+	<br>
+	<br>
+	<br>
+
+
+	<script src="js/vue.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+	<script src="js/vue-resource.min.js"></script>
+	 <!-- Firebase -->
+  	<script src="https://gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+  	<!-- VueFire -->
+  	<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+	<script src="js/velocity.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>

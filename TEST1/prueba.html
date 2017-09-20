@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>PRUEBA TABLA VUE JS</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<!--	<div class="container" id="app25">
+	<br>
+	<br>
+		<div class="row">
+			<div class="col-md-2">
+				<input type="number" class="form-control" v-model="id">
+			</div>
+			<div class="col-md-3">
+			<input
+    		v-model="name" 
+    		placeholder="Nombre"
+    		class="form-control"
+  			>
+			</div>
+			<div class="col-md-3">
+				<input type="text" class="form-control" placeholder="Apellido" v-model="ape">
+			</div>
+			<div class="col-md-4">
+				<input type="text" class="form-control" placeholder="Correo" v-model="correo">
+			</div>
+		</div>
+		<br>
+		<button class="btn btn-primary" @click="anadir(id,name,ape,correo)">Agregar</button>
+  		<br>
+  		<br>
+  		<br>
+		<div class="table-responsive">
+			<table class="table table-striped">
+		    <thead>
+		        <tr>
+		          	<th>Codigo</th>
+		          	<th>Nombre</th>
+		          	<th>Apellido</th>
+		          	<th>Correo</th>
+		          	<th>Herramientas</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		    	<tr v-for="(empleado,index) in empleados">
+		    		<td v-text="empleado.id"></td>
+		    		<td v-text="empleado.nombre"></td>
+		    		<td v-text="empleado.apellido"></td>
+		    		<td v-text="empleado.correo"></td>
+		    		<td>
+		    			<button class="btn btn-info btn-xs">Ver</button>
+		    			<button class="btn btn-primary btn-xs">Editar</button>
+		    			<button class="btn btn-danger btn-xs" @click="eliminar(index)">Eliminar</button>
+		    		</td>
+		    		
+		    	</tr>
+		    </tbody>
+		</table>
+		</div>
+		
+	</div> -->
+	<div id="app2">
+		<input type="text" placeholder="Buscar" v-model="name">
+		<table>
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>Nombre</th>
+					<th>Password</th>
+					<th>Usuario</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="usuario in usuarios">
+					<td v-text="usuario.id_usuario"></td>
+					<td v-text="usuario.nombre"></td>
+					<td v-text="usuario.password"></td>
+					<td v-text="usuario.usuario"></td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+	<script src="js/vue.js"></script>
+	<script src="js/vue-resource.min.js"></script>
+	<script src="js/app1.js"></script>
+</body>
+</html>

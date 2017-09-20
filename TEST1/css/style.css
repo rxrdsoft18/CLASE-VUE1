@@ -1,0 +1,110 @@
+/*textarea,input{
+	display: block;
+	margin:20px;
+}
+#aviso{
+	margin-left: 20px;
+	color: red;
+}*/
+.azul{
+	color: blue;
+
+}
+.subrayado{
+	text-decoration: underline;
+}
+.citaEstilo{
+	width: 400px;
+	border:1px solid gray;
+	border-radius: 10px;
+	margin:25px auto;
+	padding: 1.2em;
+	box-shadow: 5px 5px 4px black;
+	background-color: white;
+
+}
+.fade-enter-active,.fade-leave-active{
+	transition: all .5s
+}
+.fade-enter,.fade-leave-to{
+	opacity: 0;
+	transform: translateX(40px);
+}
+
+
+.bounce-enter-active {
+  animation: bounce-in .5s;
+}
+.bounce-leave-active {
+  animation: bounce-out .5s;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes bounce-out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+
+p{
+	animation-duration: 5s;
+}
+
+.completado{
+	text-decoration: line-through;
+	font-style: italic;
+	color: gray;
+}
+
+
+.app24{
+	margin-top: 80px;
+
+}
+
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+.photo{
+	width: 100px;
+	height: 100px;
+}
+.tareaFoto{
+	width: 32px;
+	margin-right: 10px;
+	border-radius: 50%
+}
+small{
+	font-size: 11px
+}
